@@ -1,0 +1,10 @@
+server:
+  port: 9000
+logging:
+  pattern:
+    console: "${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}:%line)-%msg%n}"
+spring:
+  security:
+    user:
+      name: ${SECURITY_USERNAME:kiwi}
+      password: ${SECURITY_PASSWORD:12345}

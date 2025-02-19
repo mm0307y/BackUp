@@ -1,0 +1,25 @@
+server:
+  port: 9000
+logging:
+  pattern:
+    console:  "${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}:%line)-%msg%n}"
+    level:
+      org.springframework.security:${SPRING_SECURITY_LOG_LEVEL:TRACE}
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/security?serverTimezone=Asia/Seoul
+    username: security
+    password: security
+
+  jpa:
+    hibernate:
+      ddl-auto: update #create이면 매번 새로 생성됨 update이면 기존테이블 유지함.
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true # 터미널 출력되는 SQL문은 이 설정으로 가능하다.
+    #아래 설정이 추가되면 터미널에 비번이 채번되지 않아요.
+  security:
+    user:
+      name: ${SECURITY_USERNAME:kiwi}
+      password: ${SECURITY_PASSWORD:12345}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오</title>
+    <script src="https://kit.fontawesome.com/3b3af91d34.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <!-- 앞쪽 로고 , 뒤쪽에 메뉴바 추가 -->
+        <div class="navbar_logo">
+            <a href="#">나신입</a>
+        </div>
+        <ul class="navbar_menu">
+            <li class="navbar_menu_item">Home</li>
+            <li class="navbar_menu_item">About</li>
+            <li class="navbar_menu_item">Skills</li>
+            <li class="navbar_menu_item">Project</li>
+            <li class="navbar_menu_item">Testimonials</li>
+            <li class="navbar_menu_item">Contact</li>
+        </ul>
+    </nav>
+    <main>
+    <!-- Home -->
+        <section id="home">
+            <div class="home_container">
+                <img src="./images/man4.png" alt="프로필사진" class="home_avatar">
+                <h1 class="home_title">안녕하세요. 반갑습니다.</h1>
+                <button class="home_contact">Contact Me</button>
+            </div>
+        </section>
+    <!-- About -->
+        <section id="about">
+            <h1>About me</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni dolor iusto consequatur, minus doloribus, omnis aspernatur sed nostrum delectus tempore, obcaecati maiores cupiditate repellat vel quia asperiores laborum dignissimos distinctio.
+            Eos error magnam sunt architecto numquam voluptates fuga aspernatur officia totam impedit dignissimos, tempora aliquam, inventore ad pariatur quae. Facilis sed praesentium officia, voluptatum sequi molestias ex id inventore sunt?
+            Minima vel cum quidem animi fugiat incidunt architecto dignissimos expedita eveniet consequatur doloremque voluptas laudantium asperiores eum, facilis, distinctio veniam natus ex aut pariatur iste maiores. Veritatis eius odit vero.
+            Debitis qui, facilis consequuntur cumque libero iste accusamus laboriosam corrupti nobis nam perferendis cum molestiae doloremque ea voluptatem repellendus. Itaque accusamus, voluptatem hic unde expedita blanditiis vel. In, hic voluptas?
+            Asperiores, officia inventore, totam ducimus quaerat tenetur laboriosam quam placeat perspiciatis maiores nesciunt impedit facere, velit iure ipsam illum magnam cumque debitis tempora. Incidunt delectus reprehenderit asperiores ratione est voluptatibus.</p>
+            <div class="about_majors">
+                <div class="major">
+                  <div class="major_icon">
+                    <i class="fab fa-html5"></i>
+                  </div>
+                  <h2 class="major_title">Front-End</h2>
+                  <div class="major_description">
+                    HTML, CSS, JavaScript, TypeScript,
+                    <br/>React, Vue, Web APIs
+                  </div>
+                </div>
+                <div class="major">
+                    <div class="major_icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h2 class="major_title">Back-End</h2>
+                    <div class="major_description">
+                        JAVA, Servlet, JSP, Oracle
+                    </div>
+                    </div>
+                    <div class="major">
+                    <div class="major_icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2 class="major_title">Mobile</h2>
+                    <div class="major_description">
+                        Android, 코틀린, iOS
+                    </div>
+                    </div>
+                </div>        
+        </section>
+    <!-- Skills -->
+        <section id="skills"></section>
+    <!-- Project -->
+        <section id="project">
+            <div class="project_container">
+                <h1>참여프로젝트</h1>
+                <h3>My Work</h3>
+                <div class="project_categories">
+                    <button class="category_btn selected">All</button>
+                    <button class="category_btn">Front-End</button>
+                    <button class="category_btn">Back-End</button>
+                    <button class="category_btn">Mobile</button>
+                </div>
+                <div class="work_projects">
+                    <a href="#" class="project" target="blank" data-type="front-end">
+                        <img src="/images/projects/bobeat_1.png" alt="bobeat" class="project_img">
+                        <!-- .project__description -->
+                        <div class="project_description">
+                            <h3>Bobeat Site</h3>
+                            <span>밥은 먹고 다니니</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="back-end">
+                        <img src="/images/projects/ko_medi_1.png" alt="ko_medi" class="project_img">
+                        <div class="project_description">
+                            <h3>KO:Medi Site</h3>
+                            <span>병원 인트라넷</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="back-end">
+                        <img src="/images/projects/pd_1.png" alt="bobeat" class="project_img">
+                        <div class="project_description">
+                            <h3>PD Site</h3>
+                            <span>ERP 시스템</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="back-end">
+                        <img src="/images/projects/bmun.png" alt="bangmun" class="project_img">
+                        <div class="project_description">
+                            <h3>CH4</h3>
+                            <span>방문 시스템</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="front-end">
+                        <img src="/images/projects/gym.png" alt="여기내gym" class="project_img">
+                        <div class="project_description">
+                            <h3>여기내Gym</h3>
+                            <span>GYM관리시스템</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="front-end">
+                        <img src="/images/projects/sell.png" alt="경매시스템" class="project_img">
+                        <div class="project_description">
+                            <h3>Sellimited</h3>
+                            <span>경매시스템</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="mobile">
+                        <img src="/images/projects/game.png" alt="모바일게임" class="project_img">
+                        <div class="project_description">
+                            <h3>Game Box</h3>
+                            <span>모바일 게임</span>
+                        </div>
+                        </a>
+                        <a href="#" class="project" target="blank" data-type="mobile">
+                        <img src="/images/projects/youtube.png" alt="너튜브" class="project_img">
+                        <div class="project_description">
+                            <h3>Youtube</h3>
+                            <span>웹예능 프로그램</span>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+    <!-- Contact -->
+        <section id="contact">
+            <h1 class="contact_title">Let's talk</h1>
+            <h2 class="contact_email">test@hot.com</h2>
+            <p class="contact_rights">
+                2025 한국소프트웨어인재개발원 - All rights reserved
+            </p>
+        </section>
+    </footer>
+</body>
+</html>

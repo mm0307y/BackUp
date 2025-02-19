@@ -1,0 +1,77 @@
+2024년 02월 18일 수업 내용 정리
+----------------------------------------------------------------------------------------------------------------------------
+Spring Security 설명
+
+1. Spring Security Filters
+: 여러 종류의 보안 필터를 사용하여 요청을 가로채고(제어권)
+인증필요시 혹은 권한 확인 과정을 수행한다.
+
+권한
+1. ROLE_USER
+   ROLE_MANAGER
+   ROLE_AMIN
+
+권한에 따라서 접근할 수 있는 URL이 다르다.
+/user - 메서드와 매핑
+/manager - 메서드 매핑
+/admin - 메서드 매핑
+
+동작원리
+HTTP요청이 들어오면 시큐리티 필터 체인이 순차적으로 요청을 확인합니다.
+만약 인증이 필요하다면 적절한 필터가 인증 프로세스 시작
+
+만일 이미 인증이 되어 있거나
+특정 요청은 인증이 불필요한(정적리소스) 경우
+이때는 어떡하지?
+
+2. Authentication - 사용자 신분 증명
+예 : 이름, 비밀번호, 권한-ROLE_USER, ROLE_ADMIN) 정보를 포함한다.
+생성시점 - 필터가 사용자 입력을 추출해 Authentication 객체를 만들고
+이를 매니저(AuthenticationManager)에게 넘겨 인증을 위임한다.
+
+3. AuthenticationManager - 실제 인증 과정을 총괄하는 핵심 컴포넌트이다.
+어떻게 동작하나?
+필터가 다른 컴포넌트에서 생성된 Authentication객체를 입력 받는다.
+내부적으로 등록된 AuthentivationProvider를 순회하면서 인증을 시도 한다.
+인증에 성공되면 인증된 Authentication객체를 반환하고
+만일 실패하면 예외를 던진다.
+
+4. AuthenticationProvider
+실제 인증 과정을 수행하는 구현체 이다.
+예) DB를 연동하여 인증 과정을 처리할 때
+DaoAuthenticationProvider
+LdapAuthenticationProvider.LDap서버에서 사용자 정보를 확인
+연결
+AuthenticationProvider는 보통 UserDetailsServie와
+PasswordEncoder를 사용하여 사용자 정보를 불러오고 비밀번호를 비교한다.
+
+5. UserDetailsManager / UserDetailsService
+UserDetailsService는 사용자 정보를 가져오는 인터페이스 이다.
+PrincipalDetailsService구현체 - 클백(자동) - usename - mem_id
+다른 이름의 변수를 사용하려면 SecurityConfig에 등록해야 한다.
+DB나 외부 시스템에서 사용자의 아이디, 비밀번호, 관한 등의 정보를
+조회해 UserDeatails객체를 반환한다.
+
+UserDetailsManager - UserDetailsService를 확장한 형태로
+사용자 정보 생성/수정/삭제 등의 기능을 추가로 제공할 수 있다.
+
+6. PasswordEncoder
+암호화를 하지 않고서 회원가입을 할 수는 있지만
+로그인은 불가하다.
+역할 : 비밀번호를 안전하게 저장하기 위해서 해싱/암호화하는 기능을 담당한다.
+이점 : DB에 (plain text) 비밀번호를 저장하지 않도록 하여
+보안을 강화하엿다.
+동작예시 - 사용자가 입력한 비밀번호를 PasswordEncoder로 해시
+-> DB에 저장된 해시값과 비교 -> 일치하면 인증 성공
+
+7. SecurityContext
+개념 : 인증에 성공한 사용자 정보(Authentication)를 보관하는 
+컨텍스트 이다.(영속성) - 새로고침시 쥐고 있는 정보 인증 허락
+
+위치 : SeurityContextHolder라는 스레드 로컬(ThreadLocal)에
+저장되어 요청이 진행되는 동안 언제든지 인증 정보를 참조할 수 있다.
+
+컨트롤러나 서비스 계층에서 SecurityContextHolder.getContext().getAuthentication()을
+통해 현재 로그인을 사용자 정보를 가져와 권한을 확인등에 활용이 가능하다. 
+----------------------------------------------------------------------------------------------------------------------------
+이력서 작성하기(html로)

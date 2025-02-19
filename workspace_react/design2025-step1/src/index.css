@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box; /* 1: 패딩과마진포함사이즈계산 */
+  /*border: 1px solid red;  옵션: 마진과패딩 공간, 영역, 블록 */
+}
+
+body {
+  margin: 0; /* 2: 빈공간 없이 왼쪽 상단 모서리 붙임 */
+}
+
+a {
+  text-decoration: none; /* 3:a태그 링크로 밑줄 없앰 */
+}
+
+button {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+}
+
+button:focus {
+  outline: 1px solid transparent;
+}
+
+/* 섹션 공통 */
+.section {
+  text-align: center;
+  margin: auto;
+}
+
+.max-container {
+  max-width: var(--size-max-width);
+  margin: auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.description {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+
+
+/* Header */
+.header {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  transition: all 300ms ease;
+}
+.header--dark {
+  background-color: #050a13;
+  color: white;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24) ;
+}
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header_logo_img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.header_logo_title {
+  font-size: 1.8rem;
+}
+
+ul {
+  list-style: none; /* 4: 구슬 없앰 */
+  padding: 0; /* 5:  구슬 공간 없앰 */
+}
+
+.navbar-menu {
+  display: flex; /* ul안에 li좌우로 펼침 */
+  gap: 4px;
+}
+/* 메뉴 아이템 추가 */
+.navbar-menu-item {
+  display: block;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  border-bottom: 1px solid transparent;
+}
+/* Home버튼 강조 */
+.navbar-menu-item.active {
+  border: 1px solid white;
+}
+
+.navbar-menu-item:hover {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+/* 버거아이템 추가 */
+.burger-toggle-btn {
+  position: absolute;
+  right: 32px;
+  font-size: 24px;
+  display: none;
+}
+
+
+
+/*  Home  */
+#home {
+  padding-top: 7rem;
+  text-align: center;
+}
+.home_avatar {
+  margin-top:1rem;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #eeeeee;
+}
+
+.home_title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home_title_strong {
+  color: white;
+}
+
+.home_description {
+  font-size: 1.4rem;
+  color: white
+}
+
+.home_contact {
+  display: inline-block;
+  background-color: greenyellow;
+  color:  black;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.home_contact:hover {
+  background-color: transparent;
+  color: white;
+  outline: 2px solid white;
+}
+
+.hcontent {
+  background-color: gray;
+  background-image: url('http://localhost:3000/images/camping-night2.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 500px;
+}
+.mcontent {
+  background-color: rgb(253, 242, 154);
+  width: 100%;
+  height: 500px;
+}
+.scontent {
+  background-color: rgb(252, 201, 201);
+  width: 100%;
+  height: 500px;
+}
+.pcontent {
+  background-color: rgb(167, 238, 253);
+  width: 100%;
+  height: 500px;
+}
+/* 블록요소 안에 블록요소 사용시 벌어짐발생 */
+/* 부모 자식관계로 묶어줌 */
+#contact {
+  position: relative; /* 부모 */
+}
+
+.ccontent {
+  position: absolute; /* 자식 */
+  background-color: rgb(67, 198, 1);
+  width: 100%;
+  height: 200px;
+}
+
+.contact-email,
+.contact-rights {
+  color: white;
+}
+
+.contact-links {
+  font-size: 48px;
+  transition: all 300ms ease-in;
+}
+.contact-links i:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.up {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  border-radius: 50%;
+  background-color: rgb(0, 255, 221);
+  opacity: 0;
+  transition: all 300ms ease-in;
+}
+
+.up.visible{
+  opacity: 1;
+}
+
+/* 반응형 웹 추가 - 768px보다 작아지면 발동 */
+@media screen and (max-width: 768px) {
+  .burger-toggle-btn {
+    display: block; /* 1: 버거아이콘 보임 */
+  }
+
+  #navbar {
+    /* 메뉴바의 내용이 아래로 출력 */
+    flex-direction: column; /* 3: 메뉴바내용 아래로 */
+    /* 메뉴가 앞쪽으로 배치 */
+    align-items: flex-start; /* 4 */
+  }
+/*relative 아무 효과없음. 부모자식관계로 요소 붙일때, 2번째 레이어구성할때 - z-index가 적용됨*/
+  .div-menu {
+    /* 디자이너가 원하는 위치(top[y축],bottom,left[x축], right)에 배치하려면 반드시 absolute로 함 */
+    position: absolute;
+    top: 50px;/* position absolute가 없으면 효과없음 */
+    width: 100%; /* 2: 메뉴아이템이 전체채움 */
+  }
+
+  .navbar-menu {
+    flex-direction: column; /* 5: 메뉴가 아래방향 */
+    display: none; /* 6-1 반응형 테스트시에만 block 두어 확인할것.  */
+    text-align: center; /* 7 글씨 가운데 정렬*/
+  }
+  /* 버거아이콘을 누르면 css 추가함 - open */
+  /* 노드주소번지.classList.toggle(open)*/
+  .navbar-menu.open {
+    display: block; /* 6 */
+  }
+}

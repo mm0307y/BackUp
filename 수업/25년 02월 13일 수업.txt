@@ -1,0 +1,78 @@
+2025년 02월 13일 수업 내용
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+CRUD 패턴
+
+localhost:3000/reboard -> ReBoardDBList.jsx -> 목록 페이지
+1) 페이지가 열릴 때 오라클 서버를 경유할 것 인지
+
+2) 일단 화면을 출력하고 조회 버튼을 클릭했을 때 오라클 서버를 경유 할 것 인지 
+코드 전개가 다르다. - useEffect - 조회진행(8000번 서버 요청 필요하다. - axios 활용해서 비동기 처리)
+만일 axios를 사용해서 비동기 처리를 하는거라면 내가 작성ㅇ한 Promise 사용하지 않아도 된다.
+new Promise((resolve, reject) => { })
+
+3) 화면이 열릴 때 오라클 서버를 반드시 경유해야 하는 경우와 그렇지 않은 경우를 나누어 생각해보기
+
+수정하기 - 화면을 열기전에 오라클 서버를 먼저 경유해야 한다. 
+action(select - 8000) - 수정화면을 열어줘 html(수정화면 - 수정(저장)버튼) - action(update - 8000) - html
+
+삭제하기처리
+html(상세보기 화면) -> action(누르기) (삭제 버튼 - delete) - action(select) - html(목록) ->navigate("/reboard")
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+REST API(HTTP URI를 통해 자원을 명시하고, 
+HTTP Method (POST, GET, PUT, DELETE)를 통해 해당 자원에 대한 CRUD OPERATION을 적용하는 것을 의미한다.)
+
+get, delete
+- 파라미터로 값을 넘기기
+-노출이 안된다.
+
+post, put
+------------------------------------------------------------------------------------------------------------------------------------------------
+카카오 로그인 구현하기
+
+서로 다른 서버 사용 중 - 쿠키 전략
+세션
+시큐리티 사용하는 세션 영역
+
+Front-End : React - http://localhost:3000
+카카오 로그인 버튼 클릭 -> 이벤트 발생 -> 인가 코드 가져오기(code 변수)
+redirect_url = http://localhost:8000/auth/kakao/callback?code=인가코드
+
+http://localhost:3000/login -> LoginPage.jsx 호출 -> 주소창에 보여지는 URL값이 
+
+리액트 화면에 주소창에는 http://localhost:3000/login -> 카카오인증창 -> 이메일, 비번, 2차 번호 인증 -> 끝
+https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=4ea7ace8a82124712ffdfd528e65bcf5 이 일 끝
+
+http://localhost:8000/auth/kakao/callback 시작
+
+2단계 : 토큰 받기(프로필 정보를 받아오기 요청)
+
+3단계 : 프로필 정보 받아온다. - 세션에 담기(리액트와 스프링 부트가 공유가 안된다. - 동기화 해야된다.) - 후처리
+
+http:localhost:3000/login-success?email=kiwi@hot.com
+
+const kakaoURL = https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=4ea7ace8a82124712ffdfd528e65bcf5&redirect_uri=http://localhost:8000/auth/kakao/callback
+
+window.location.href = kakaoURL
+
+tps://kauth.kakao.com/oauth/authorize?response_type=code&client_id=4ea7ace8a82124712ffdfd528e65bcf5 응답처리
+
+response.sendredirect("http://localhost:8000/auth/kakao/callback")
+
+
+http://localhost:3000/login 이상태에서 kakaoURL 요청이 발생하면
+http://localhost:8000/auth/kakao/callback로 응답을 해준다.
+
+Back-End : Spring Boot - http://localhost:8000
+세션 사용이 가능하다. - cache메모리 사용
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+광고 
+월요일(02월 17일) 스프링 시큐리티
+: 시큐리티에서는 세션에 대한 별도의 메카닉이 있다.
+: DB연동 - mysql(범용적 - ) - JPA
+spring boot 설정 JPA설정
+인증/인가
+페이지 요청에 대한 권한 부여하고 권한별로 페이지를 출력하기

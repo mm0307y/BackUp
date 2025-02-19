@@ -1,0 +1,51 @@
+2025년 02월 14일 수업
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+코드 설명
+
+props 사용하려면 밑에 실행 순서를 알아야 한다.
+주의 : 상위 태그에서 하위태그로만 넘길 수 있다.
+
+해결 방법 : 하위 컴포넌트 (함수 - 태그로 표시한다.) - 상위 컴포넌트 화면에 조작, 이벤트 처리 - props활용한다.
+일급함수 - props로 전달이 가능하다.
+
+index.html - root
+
+index.js - App 등록 - 라우트 설정
+const authLogic = new AuthLogic(app); // app -> firebase.js -> app참조
+라우트 - reducer - 2개
+setAuth
+setToastMag - 단순한 메시징 처리 - 메시징 처리 지원 - spring 프레임워크 내장된다.
+Flux 아키텍쳐 공부하고 사용하기.
+
+App.jsx 라우트 설정 
+URL이름 등장 - 3000번 8000번 연결
+dbLogic.js - CRUD 함수 - 비동기 처리 - axios - new Promise
+authLogic.js - 인증/인가, 비밀번호 찾기, 이메일 찾기, 기타 인증
+
+src -> components
+board -> ReBoardDBList.jsx
+
+게시글 목록을 조회하는 화면
+web page flow chart
+ReBoardDBList -> 비교알고리즘 동작 key={} -> ReBoardDBItem -> 제목 -> 클릭 -> 상세보기(ReBoardDBDetail.jsx)
+ReBoardHeader -> 수정, 삭제, 목록 -> props 활용 -> 수정 -> dbLogic.js -> 스프링 부트 -> @RequestMapping확인
+
+src -> service
+src -> redux
+
+쿠키나 세션 - 기초 
+Spring Boot Security(인증/인가) - 3000번 - 이종간에 연계 서비스 - intercept(filter 발전해서 인터셉트가나왔다.)
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+스프링 로그 레벨 
+
+TRACE < DEBUG < INFO < WARN < ERROR
+
+개발 서버 - INFO레벨(디폴트)
+예외 - DB관련 예외 에러 메시지, 쿼리문 추적, Spring Security(필터, 인터셉터 - 보이지 않는다.)
+디버깅 레벨 테스트 - 추적이 필요하다.
+TRACE이면 상세 메시지를 봐서 좋기는 하지만 필요없는 메시지가 다수 함께 출력된다.
+부분 적용해서 로그레벨 관리하기
+
+운영서버 - 로그 IO처리 불가
+IO처리 - Dead Lock
