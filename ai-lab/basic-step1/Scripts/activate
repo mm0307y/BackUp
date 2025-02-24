@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Java_Pyhon\ai-lab\basic-step1"
+VIRTUAL_ENV="C:\Users\mtwd9\Desktop\수업백업\ai-lab\basic-step1"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
