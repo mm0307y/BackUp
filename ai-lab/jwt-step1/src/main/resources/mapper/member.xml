@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.MemberMapper">
+    <select id="findByUsername" parameterType="string" resultType="com.example.demo.model.User">
+        SELECT id, username, password, email, createdate, role
+        FROM user250304
+        WHERE username = #{value}
+    </select>
+    <insert id="userInsert" parameterType="com.example.demo.model.User">
+        INSERT INTO user250304(id, username, password, email, createdate, role)
+        VALUES (seq_user250304_id.nextval, #{username}, #{password}, #{email}, to_char(sysdate, 'YYYY-MM-DD'), #{role})
+    </insert>
+</mapper>

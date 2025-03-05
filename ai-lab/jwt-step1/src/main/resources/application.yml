@@ -1,11 +1,12 @@
 server:
   port: 8000
-  tomcat:
+  tomcat: 
     additional-tld-skip-patterns: "*.jar"
 logging:
   pattern:
-    console: "${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}:%line)-%msg%n}"
-    level: org.springframework.security:${SPRING_SECURITY_LOG_LEVEL:TRACE}
+    console:  "${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}:%line)-%msg%n}"
+    level:
+      org.springframework.security:${SPRING_SECURITY_LOG_LEVEL:TRACE}
 spring:
   datasource:
     hikari:
