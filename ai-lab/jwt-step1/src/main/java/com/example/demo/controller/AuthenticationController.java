@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.JwtAuthenticationResponse;
 import com.example.demo.model.RefreshTokenRequest;
 import com.example.demo.model.SigninRequest;
+import com.example.demo.model.SignupRequest;
 import com.example.demo.service.AuthenticationService;
 
 import lombok.extern.log4j.Log4j2;
@@ -26,10 +27,15 @@ public class AuthenticationController {
         log.info("sigin 호출 => " + signinRequest);
         return ResponseEntity.ok(authenticationService.signin(signinRequest));
     }
+    @PostMapping("/signup")
+    public ResponseEntity<Integer> signup(@RequestBody SignupRequest signupRequest){
+        log.info("join 호출 => " + signupRequest);
+        return ResponseEntity.ok(authenticationService.signup(signupRequest));
+    }
     //refreshToken발급
     @PostMapping("/refresh")
     public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshRequest){
         log.info("refresh 호출 => " + refreshRequest);
-        return ResponseEntity.ok(authenticationService.refeshToken(refreshRequest));
+        return ResponseEntity.ok(authenticationService.refreshToken(refreshRequest));
     }
 }

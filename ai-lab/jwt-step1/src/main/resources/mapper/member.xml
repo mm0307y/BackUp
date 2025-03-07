@@ -8,7 +8,7 @@
         FROM user250304
         WHERE username = #{value}
     </select>
-    <insert id="userInsert" parameterType="com.example.demo.model.User">
+    <insert id="userInsert" parameterType="com.example.demo.model.SignupRequest">
         INSERT INTO user250304(id, username, password, email, createdate, role)
         VALUES (seq_user250304_id.nextval, #{username}, #{password}, #{email}, to_char(sysdate, 'YYYY-MM-DD'), #{role})
     </insert>

@@ -47,3 +47,18 @@ export const oracleLogin = async(user) => {
         console.error("로그인 요청 에러 :", error)
     }
 }
+export const oracleJoin = async(user) => {
+        //사용자가 입력한 값
+        console.log(user)
+        try {
+            const response = await axios({
+                method: 'post',
+                url: `${process.env.REACT_APP_SPRING_IP}api/v1/auth/signup`,
+                data: user,
+            })//end of axios
+            console.log(response)
+            return response.data
+        } catch (error) {
+            console.error("회원가입 요청 에러 :", error)
+        }    
+}

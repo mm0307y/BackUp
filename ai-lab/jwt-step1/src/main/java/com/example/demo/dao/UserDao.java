@@ -3,6 +3,7 @@ package com.example.demo.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.model.SignupRequest;
 import com.example.demo.model.User;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,9 +20,9 @@ public class UserDao {
         return user;
     }
     //회원 가입 구현
-    public int userInsert(User user){
+    public int signup(SignupRequest signupRequest){
         int result = 0;
-        result = sqlSessionTemplate.insert("userInsert", user);
+        result = sqlSessionTemplate.insert("userInsert", signupRequest);
         return result;
     }
 }

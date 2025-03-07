@@ -37,7 +37,7 @@ const Header = ({isTokenExpired}) => {
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
             <Link to="/home" className="nav-link">Home</Link>
-            <Link to="/login" className='nav-link'>로그인</Link>
+            <Link to="/" className='nav-link'>로그인</Link>
             <Link to="/tent" className='nav-link'>텐트몰</Link>
             <Link to="/schedule" className='nav-link'>스케쥴</Link>
             <Link to="/notice" className='nav-link'>공지사항</Link>

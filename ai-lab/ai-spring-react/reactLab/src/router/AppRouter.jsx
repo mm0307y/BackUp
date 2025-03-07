@@ -7,17 +7,16 @@ import SchedulePage from '../components/pages/SchedulePage'
 import NoticePage from '../components/pages/NoticePage'
 import JoinPage from '../components/auth/JoinPage'
 import PrivateRouter from './PrivateRouter'
+import ErrorPage from '../components/pages/ErrorPage'
 
 const AppRouter = () => {
     const role = localStorage.getItem("role") //USER, ADMIN  -> enum열거형 타입
     return (
         <Routes>
             <Route path="/home" exact={true} element={<HomePage />}/>
-            <Route path="/login" exact={true} element={<LoginPage />}/>
-            <Route path="/joinForm" exact={true} element={<JoinPage />}/>
             <Route path="/tent" exact={true} element={<TentPage />}/>
             <Route path="/schedule" exact={true} element={
-                <PrivateRouter role={role} allowedRoles={["ADMIN", "USER"]}>
+                <PrivateRouter role={role} allowedRoles={["ADMIN"]}>
                     <SchedulePage /> 
                 </PrivateRouter>
             }/>
@@ -26,6 +25,7 @@ const AppRouter = () => {
                     <NoticePage /> 
                 </PrivateRouter>
             }/>
+            <Route path='/error' exact={true} element={<ErrorPage />}></Route>
         </Routes>        
     )
 }
